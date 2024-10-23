@@ -1,31 +1,22 @@
-package com.example.ims_android
-
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.ims_android.R
 import com.example.ims_android.ui.theme.ImsandroidTheme
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            ImsandroidTheme {
-                LoginScreen()
-            }
-        }
-    }
-}
 
 @Composable
 fun LoginScreen() {
@@ -37,8 +28,28 @@ fun LoginScreen() {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally // Align content to center horizontally
     ) {
+        // Icon
+        Image(
+            painter = painterResource(id = R.drawable.logo), // Image Reference
+            contentDescription = "App Logo",
+            modifier = Modifier.size(150.dp) //Image Size
+        )
+
+        Spacer(modifier = Modifier.height(24.dp)) // Space between icon and title
+
+        // Title
+        Text(
+            text = "Inventory Management System",
+            fontSize = 25.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
+
+        Spacer(modifier = Modifier.height(32.dp)) // Space between title and username field
+
         // Username Text Field
         TextField(
             value = username.value,
@@ -56,6 +67,7 @@ fun LoginScreen() {
             label = { Text("Password") },
             modifier = Modifier.fillMaxWidth(),
             visualTransformation = PasswordVisualTransformation() // Mask password
+
         )
 
         Spacer(modifier = Modifier.height(24.dp)) // Space before button
@@ -63,9 +75,13 @@ fun LoginScreen() {
         // Login Button
         Button(
             onClick = { /* Handle login click */ },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp), // Adjust button height if necessary
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50)), // Set green color
+            shape = RoundedCornerShape(8.dp) // Rounded corners
         ) {
-            Text("Login")
+            Text("Log in", color = Color.White)
         }
     }
 }

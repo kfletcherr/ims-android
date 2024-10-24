@@ -1,13 +1,13 @@
 # ims-android
 
 
-##Inventory Management System (IMS) - Android App
+## Inventory Management System (IMS) - Android App
 
-#Overview
+# Overview
 
 This Android app is designed to scan items and add them to the inventory management system. It streamlines the process of inventory tracking by allowing users to use their device's camera for barcode scanning, making it easier to add and verify items on the go.
 
-#Features
+# Features
 
 Barcode Scanning: Quickly scan items using the device's camera and add them to the inventory system.
 Real-Time Updates: Items added through the app are synced with the main inventory system.
